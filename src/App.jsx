@@ -4,12 +4,13 @@ function App() {
   return (
     <div className="container">
       <header style={{ textAlign: 'center' }}>
-        <img
-          src="/img/Gabriela-perfil.jpg"
-          alt="Gabriela Castorena"
-          width="160"
-          style={{ borderRadius: '50%', marginBottom: '1rem' }}
-        />
+       <img
+  src="/img/Gabriela-perfil.png"
+  alt="Gabriela Castorena"
+  width="160"
+  style={{ borderRadius: '50%', marginBottom: '1rem' }}
+/>
+
         <h1>Gabriela Castorena Reyes</h1>
         <h2>Ingeniera en Metrología Industrial</h2>
       </header>
