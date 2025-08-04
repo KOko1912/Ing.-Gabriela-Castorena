@@ -1,0 +1,5 @@
+services:
+  - type: static
+    name: mi-vista-render
+    staticPublishPath: dist
+    buildCommand: npm install && npm run build
