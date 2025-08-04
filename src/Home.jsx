@@ -1,15 +1,30 @@
-// src/Home.jsx
 import './App.css';
 import { useEffect, useState } from 'react';
 import profileImg from '/img/Gabriela-perfil.jpg';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 function Home() {
   const [showContent, setShowContent] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const images = [
+    "/img/carusel1.jpg",
+    "/img/carrusel2.jpg",
+    "/img/carrusel3.jpg"
+  ];
 
   useEffect(() => {
     const timer = setTimeout(() => setShowContent(true), 3000);
     return () => clearTimeout(timer);
   }, []);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+  };
 
   return (
     <div className="home-screen">
@@ -47,22 +62,43 @@ function Home() {
               <p className="section-subtitle">
                 Verificación de equipo de atributos (juego de bloques patrón) utilizado para calibrar instrumentos como micrómetros, vernier, pies de rey, indicadores de altura.
               </p>
-              <video controls width="100%" style={{ maxWidth: '720px', marginTop: '1.5rem', borderRadius: '12px' }}>
-                <source src="/img/VideoGabrielacastoerna.mp4" type="video/mp4" />
-                Tu navegador no soporta este video.
-              </video>
+              <div className="video-container">
+                <video controls width="100%" style={{ maxWidth: '720px', marginTop: '1.5rem', borderRadius: '12px' }}>
+                  <source src="/img/VideoGabrielacastoerna.mp4" type="video/mp4" />
+                  Tu navegador no soporta este video.
+                </video>
+              </div>
             </div>
           </section>
 
-          {/* Carrusel */}
+          {/* Carrusel Mejorado */}
           <section className="section">
             <div className="section-header">
               <h2 className="section-title">Calibración y TPM</h2>
               <p className="section-subtitle">Calibración de gages de línea y mantenimiento preventivo</p>
-              <div className="carousel">
-                <img src="/img/carusel1.jpg" className="carousel-img" alt="Gage 1" />
-                <img src="/img/carrusel2.jpg" className="carousel-img" alt="Gage 2" />
-                <img src="/img/carrusel3.jpg" className="carousel-img" alt="Gage 3" />
+              <div className="carousel-container">
+                <button className="carousel-button prev" onClick={prevSlide}>
+                  <FaChevronLeft />
+                </button>
+                <div className="carousel-slide">
+                  <img 
+                    src={images[currentSlide]} 
+                    alt={`Gage ${currentSlide + 1}`} 
+                    className="carousel-img active" 
+                  />
+                </div>
+                <button className="carousel-button next" onClick={nextSlide}>
+                  <FaChevronRight />
+                </button>
+                <div className="carousel-dots">
+                  {images.map((_, index) => (
+                    <span 
+                      key={index} 
+                      className={`dot ${index === currentSlide ? 'active' : ''}`}
+                      onClick={() => setCurrentSlide(index)}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
           </section>
