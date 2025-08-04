@@ -1,8 +1,10 @@
-// src/TextType.jsx
 "use client";
 
 import { useEffect, useRef, useState, createElement } from "react";
 import { gsap } from "gsap";
 import "./TextType.css";
 
-// ... pega aquí TODO el código que ya tienes del componente
+// ⬇️ Asegúrate de incluir todo tu código aquí como ya hiciste
+
+// ✅ Y al final agrega esto:
+export default TextType;
