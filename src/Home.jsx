@@ -1,8 +1,18 @@
 // src/Home.jsx
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import TextType from './TextType';
-import { Link } from 'react-router-dom';
 
 function Home() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      navigate('/perfil');
+    }, 3000); // redirige en 3 segundos
+    return () => clearTimeout(timer);
+  }, [navigate]);
+
   return (
     <div className="home-screen">
       <div className="centered-content">
@@ -14,9 +24,6 @@ function Home() {
           cursorCharacter="|"
         />
         <p className="contact">Contacto: <strong>844 178 6280</strong></p>
-        <Link to="/perfil" className="cta-button">
-          Ver perfil profesional →
-        </Link>
       </div>
     </div>
   );
