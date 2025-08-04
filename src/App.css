@@ -70,3 +70,15 @@ h2 {
   font-size: 1.2rem;
   margin-top: 1rem;
 }
+.carousel {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding: 1rem 0;
+}
+
+.carousel-img {
+  height: 200px;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
